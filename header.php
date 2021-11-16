@@ -20,7 +20,7 @@
 
 <body class="hold-transition sidebar-mini" <?php body_class(); ?>>
 
-<?php wp_body_open(); ?>
+
 
 
 

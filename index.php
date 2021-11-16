@@ -1,11 +1,16 @@
 <?php get_header(); ?>
 
-
+<?php wp_body_open(); ?>
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+
+
+
     <!-- Left navbar links -->
+    
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -17,6 +22,15 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
+    
+
+
+
+
+
+
+
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -162,9 +176,10 @@
       </div>
 
       <!-- SidebarSearch Form -->
+      <!--
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">          
           <div class="input-group-append">
             <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
@@ -172,7 +187,7 @@
           </div>
         </div>
       </div>
-
+      -->
       <!-- Sidebar Menu -->
       <?php get_sidebar(); ?>
       <!-- /.sidebar-menu -->
@@ -191,7 +206,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank Page <?php echo esc_html__( 'Blog', 'foodoholic' ); ?>
+            <h1>Blank Page
 
             </h1>
           </div>
@@ -212,7 +227,7 @@
 
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Title</h3>
+          <h3 class="card-title"><?php single_post_title(); ?></h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -223,45 +238,9 @@
             </button>
           </div>
         </div>
+
         <div class="card-body">
-          Start creating your amazing application!
-
-
-
-
-
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
-    Aquí va el contenido de cada post
-
-<?php endwhile; else: ?>
-
-    Aquí va un mensaje en caso de que no haya posts para mostrar
-
-<?php endif; ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
+          <?php the_content(); ?>
         </div>
 
         <!-- /.card-body -->
@@ -278,7 +257,73 @@
 
 
 
-  
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+
+    
+
+       <div class="card-body">
+          <?php
+            while ( have_posts() ) : the_post();
+              //printf( '<h1><a href="%s">%s</a></h1>', get_permalink(), get_the_title() );   
+              //the_post_thumbnail();
+              //the_excerpt();
+              comments_template();
+            endwhile;
+          ?> 
+
+          
+        </div>
+
+
+
+
+
+
+        <!-- /.card-body -->
+ 
+        <div class="card-footer">
+          Footer
+        </div>
+      
+        <!-- /.card-footer-->
+
+      </div>
+    
+      <!-- /.card -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
