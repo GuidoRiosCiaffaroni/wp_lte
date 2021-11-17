@@ -235,11 +235,11 @@
 
 
 
-<?php while ( have_posts() ) : the_post(); ?>
+
 
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title"><?php printf( '<a href="%s">%s</a>', get_permalink(), get_the_title() );  ?></h3>
+          <h3 class="card-title"><?php single_post_title(); ?></h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -252,17 +252,83 @@
         </div>
 
         <div class="card-body">
-          <?php //the_content();   
-              the_post_thumbnail();
-              the_excerpt();
-              comments_template();
-
-          ?>
-
-
+          <?php the_content(); ?>
 
         
         </div>
+
+        <!-- /.card-body -->
+ 
+        <div class="card-footer">
+          Footer
+        </div>
+      
+        <!-- /.card-footer-->
+
+      </div>
+    
+      <!-- /.card -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+
+    
+
+       <div class="card-body">
+
+
+        
+          <?php
+          
+            while ( have_posts() ) : the_post();
+              printf( '<h1><a href="%s">%s</a></h1>', get_permalink(), get_the_title() );   
+              the_post_thumbnail();
+              the_excerpt();
+              comments_template();
+            endwhile;
+            
+          ?> 
+
+          
+          <?php 
+          /*
+            if ( have_posts() ) : 
+              while ( have_posts() ) : 
+                //the_post(); 
+                get_template_part( 'entry' );
+                comments_template();
+              endwhile; 
+            endif;
+          get_template_part( 'nav', 'below' );
+          */ 
+          ?>
+          
+
+          
+        </div>
+
+
 
         <!-- /.card-body -->
  
@@ -274,11 +340,6 @@
         <!-- /.card-footer-->
 
       </div>
-    
-    <?php endwhile; ?>     
-      <!-- /.card -->
-
-
     
       <!-- /.card -->
 
