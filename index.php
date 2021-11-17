@@ -287,9 +287,6 @@
 
 
 
-
-
-
         <!-- /.card-body -->
  
         <div class="card-footer">
@@ -305,7 +302,7 @@
 
 
 
-
+<div class="entry-links"><?php wp_link_pages(); ?></div>
 
 
 
