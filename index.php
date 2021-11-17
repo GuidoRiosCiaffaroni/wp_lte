@@ -166,6 +166,10 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
+
+
+
+
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="<?php echo get_template_directory_uri(); ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -241,6 +245,23 @@
 
         <div class="card-body">
           <?php the_content(); ?>
+
+
+      <?php
+      $current_user = wp_get_current_user();
+      
+      printf( __( 'Username: %s', 'textdomain' ), esc_html( $current_user->user_login ) ) . '<br />';
+      printf( __( 'User email: %s', 'textdomain' ), esc_html( $current_user->user_email ) ) . '<br />';
+      printf( __( 'User first name: %s', 'textdomain' ), esc_html( $current_user->user_firstname ) ) . '<br />';
+      printf( __( 'User last name: %s', 'textdomain' ), esc_html( $current_user->user_lastname ) ) . '<br />';
+      printf( __( 'User display name: %s', 'textdomain' ), esc_html( $current_user->display_name ) ) . '<br />';
+      printf( __( 'User ID: %s', 'textdomain' ), esc_html( $current_user->ID ) );
+
+      ?>
+
+
+
+        
         </div>
 
         <!-- /.card-body -->
@@ -291,6 +312,7 @@
  
         <div class="card-footer">
           Footer
+          <div class="entry-links"><?php echo wp_link_pages(); ?></div>
         </div>
       
         <!-- /.card-footer-->
@@ -302,7 +324,7 @@
 
 
 
-<div class="entry-links"><?php wp_link_pages(); ?></div>
+
 
 
 
