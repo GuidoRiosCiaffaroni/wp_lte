@@ -10,7 +10,9 @@
 
 
     <!-- Left navbar links -->
-    
+
+
+
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -23,11 +25,6 @@
       </li>
     </ul>
     
-
-
-
-
-
 
 
 
@@ -158,14 +155,19 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="<?php echo get_site_url(); ?>" class="brand-link">
       <img src="<?php echo get_template_directory_uri(); ?>/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
+
       <!-- Sidebar user (optional) -->
+
+
+
+
 
 
 
@@ -175,7 +177,7 @@
           <img src="<?php echo get_template_directory_uri(); ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="<?php echo get_site_url(); ?>/wp-admin/users.php" class="d-block"><?php printf( __( '%s', 'wp_lte' ), esc_html( $current_user->user_login ) );?></a>
         </div>
       </div>
 
@@ -229,6 +231,12 @@
 
       <!-- Default box -->
 
+
+
+
+
+
+
       <div class="card">
         <div class="card-header">
           <h3 class="card-title"><?php single_post_title(); ?></h3>
@@ -245,21 +253,6 @@
 
         <div class="card-body">
           <?php the_content(); ?>
-
-
-      <?php
-      $current_user = wp_get_current_user();
-      
-      printf( __( 'Username: %s', 'textdomain' ), esc_html( $current_user->user_login ) ) . '<br />';
-      printf( __( 'User email: %s', 'textdomain' ), esc_html( $current_user->user_email ) ) . '<br />';
-      printf( __( 'User first name: %s', 'textdomain' ), esc_html( $current_user->user_firstname ) ) . '<br />';
-      printf( __( 'User last name: %s', 'textdomain' ), esc_html( $current_user->user_lastname ) ) . '<br />';
-      printf( __( 'User display name: %s', 'textdomain' ), esc_html( $current_user->display_name ) ) . '<br />';
-      printf( __( 'User ID: %s', 'textdomain' ), esc_html( $current_user->ID ) );
-
-      ?>
-
-
 
         
         </div>
@@ -279,6 +272,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
       <div class="card">
         <div class="card-header">
           <div class="card-tools">
@@ -294,14 +296,34 @@
     
 
        <div class="card-body">
+
+
+        
           <?php
+          
             while ( have_posts() ) : the_post();
-              //printf( '<h1><a href="%s">%s</a></h1>', get_permalink(), get_the_title() );   
-              //the_post_thumbnail();
-              //the_excerpt();
+              printf( '<h1><a href="%s">%s</a></h1>', get_permalink(), get_the_title() );   
+              the_post_thumbnail();
+              the_excerpt();
               comments_template();
             endwhile;
+            
           ?> 
+
+          
+          <?php 
+          /*
+            if ( have_posts() ) : 
+              while ( have_posts() ) : 
+                //the_post(); 
+                get_template_part( 'entry' );
+                comments_template();
+              endwhile; 
+            endif;
+          get_template_part( 'nav', 'below' );
+          */ 
+          ?>
+          
 
           
         </div>
