@@ -267,8 +267,12 @@
         <!-- /.card-body -->
  
         <div class="card-footer">
-          Footer
-          <div class="entry-links"><?php echo wp_link_pages(); ?></div>
+        Autor: <?php echo the_author(); ?> </br> 
+        Fecha: <?php echo the_date(); ?> / <?php echo the_time(); ?> </br> 
+        <?php echo the_tags(); ?> </br> 
+        Categoria: <?php echo the_category(', '); ?> </br> 
+         </br> 
+         
         </div>
       
         <!-- /.card-footer-->

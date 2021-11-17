@@ -165,13 +165,6 @@
 
       <!-- Sidebar user (optional) -->
 
-
-
-
-
-
-
-
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="<?php echo get_template_directory_uri(); ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -277,6 +270,7 @@
  
         <div class="card-footer">
           Footer
+          <?php echo the_author(); ?>
           <div class="entry-links"><?php echo wp_link_pages(); ?></div>
         </div>
       
@@ -296,38 +290,6 @@
 
     
       <!-- /.card -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </section>
