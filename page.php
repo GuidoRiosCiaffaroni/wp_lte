@@ -235,7 +235,10 @@
 
 
 
-<?php while ( have_posts() ) : the_post(); ?>
+<?php 
+  if ( have_posts() ) : 
+    while ( have_posts() ) : 
+      the_post(); ?>
 
       <div class="card">
         <div class="card-header">
@@ -252,16 +255,22 @@
         </div>
 
         <div class="card-body">
-          <?php //the_content();   
-              the_post_thumbnail();
-              the_excerpt();
-              comments_template();
 
-          ?>
-
-
-
-        
+          <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <header class="header">
+              <h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1> 
+              <?php edit_post_link(); ?>
+            </header>
+            <div class="entry-content" itemprop="mainContentOfPage">
+              <?php 
+                if ( has_post_thumbnail() ) { 
+                  the_post_thumbnail( 'full', array( 'itemprop' => 'image' ) ); 
+                }
+                the_content(); 
+              ?>
+              <div class="entry-links"><?php wp_link_pages(); ?></div>
+            </div>
+          </article>
         </div>
 
         <!-- /.card-body -->
@@ -275,7 +284,13 @@
 
       </div>
     
-    <?php endwhile; ?>     
+<?php 
+  if ( comments_open() && !post_password_required() ) { 
+    comments_template( '', true ); 
+  } 
+    endwhile; 
+  endif; 
+?>   
       <!-- /.card -->
 
 
